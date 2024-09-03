@@ -70,6 +70,8 @@ def get_config(company):
 
 
 parser = argparse.ArgumentParser(description='argparse')
+parser.add_argument('--local', action='store_true',
+                    help="Switch ChatDev to use local Ollama API instead of OpenAI API. Warning: turn on Ollama first!")
 parser.add_argument('--config', type=str, default="Default",
                     help="Name of config, which is used to load configuration under CompanyConfig/")
 parser.add_argument('--org', type=str, default="DefaultOrganization",
@@ -94,10 +96,13 @@ args2type = {'GPT_3_5_TURBO': ModelType.GPT_3_5_TURBO,
              'GPT_4': ModelType.GPT_4,
             #  'GPT_4_32K': ModelType.GPT_4_32k,
              'GPT_4_TURBO': ModelType.GPT_4_TURBO,
+             'openhermes': ModelType.LOCAL_LLAMA_OPEN_HERMES
             #  'GPT_4_TURBO_V': ModelType.GPT_4_TURBO_V
              }
 if openai_new_api:
     args2type['GPT_3_5_TURBO'] = ModelType.GPT_3_5_TURBO_NEW
+if args.local:
+    os.environ["RUN_LOCALLY"] = "1"
 
 chat_chain = ChatChain(config_path=config_path,
                        config_phase_path=config_phase_path,

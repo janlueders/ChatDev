@@ -206,13 +206,17 @@ class Phase(ABC):
         messages = "\n\n".join(messages)
 
         if "recruiting" in phase_name:
-            question = """Answer their final discussed conclusion (Yes or No) in the discussion without any other words, e.g., "Yes" """
+            question = """Answer their final discussed conclusion (Yes or No) in the discussion without any other 
+            words, e.g., "Yes"""
         elif phase_name == "DemandAnalysis":
-            question = """Answer their final product modality in the discussion without any other words, e.g., "PowerPoint" """
+            question = """Answer their final product modality in the discussion without any other words, e.g., 
+            "PowerPoint"""
         elif phase_name == "LanguageChoose":
-            question = """Conclude the programming language being discussed for software development, in the format: "*" where '*' represents a programming language." """
+            question = """Conclude the programming language being discussed for software development, in the format: 
+            "*" where '*' represents a programming language."""
         elif phase_name == "EnvironmentDoc":
-            question = """According to the codes and file format listed above, write a requirements.txt file to specify the dependencies or packages required for the project to run properly." """
+            question = """According to the codes and file format listed above, write a requirements.txt file to 
+            specify the dependencies or packages required for the project to run properly."""
         else:
             raise ValueError(f"Reflection of phase {phase_name}: Not Assigned.")
 

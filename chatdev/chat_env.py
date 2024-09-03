@@ -36,7 +36,7 @@ class ChatEnvConfig:
         self.git_management = git_management  # Whether to use git to manage the creation and changes of generated software
         self.incremental_develop = incremental_develop  # Whether to use incremental develop on an existing project
         self.background_prompt = background_prompt  # background prompt that will be added to every inquiry to LLM
-        self.with_memory = with_memory # Wheter to use memroy in the interaction between agents
+        self.with_memory = with_memory  # Wheter to use memroy in the interaction between agents
 
     def __str__(self):
         string = ""
@@ -62,7 +62,7 @@ class ChatEnv:
         self.env_dict = {
             "directory": "",
             "task_prompt": "",
-            "task_description":"",
+            "task_description": "",
             "modality": "",
             "ideas": "",
             "language": "",
@@ -96,10 +96,10 @@ class ChatEnv:
             print("{} Created".format(directory))
         else:
             os.mkdir(self.env_dict['directory'])
-    
+
     def init_memory(self):
         self.memory.id_enabled = True
-        self.memory.directory = os.path.join(os.getcwd(),"ecl","memory")
+        self.memory.directory = os.path.join(os.getcwd(), "ecl", "memory")
         if not os.path.exists(self.memory.directory):
             os.mkdir(self.memory.directory)
         self.memory.upload()
